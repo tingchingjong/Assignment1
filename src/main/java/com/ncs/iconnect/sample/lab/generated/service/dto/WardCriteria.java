@@ -68,7 +68,7 @@ public class WardCriteria implements Serializable, Criteria {
 
     private StringFilter wardName;
 
-    private WardClassTypeFilter wardClassType;
+    private StringFilter wardClassType;
 
     private WardLocationFilter wardLocation;
 
@@ -115,11 +115,11 @@ public class WardCriteria implements Serializable, Criteria {
         this.wardName = wardName;
     }
 
-    public WardClassTypeFilter getWardClassType() {
+    public StringFilter getWardClassType() {
         return wardClassType;
     }
 
-    public void setWardClassType(WardClassTypeFilter wardClassType) {
+    public void setWardClassType(StringFilter wardClassType) {
         this.wardClassType = wardClassType;
     }
 

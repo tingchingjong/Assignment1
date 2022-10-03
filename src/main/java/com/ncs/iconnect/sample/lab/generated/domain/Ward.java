@@ -38,9 +38,10 @@ public class Ward implements Serializable {
     private String wardName;
 
     @NotNull
-    @Enumerated(EnumType.STRING)
+    // @Enumerated(EnumType.STRING)
     @Column(name = "ward_class_type", nullable = false)
-    private WardClassType wardClassType;
+    private String wardClassType;
+
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -86,16 +87,16 @@ public class Ward implements Serializable {
         this.wardName = wardName;
     }
 
-    public WardClassType getWardClassType() {
+    public String getWardClassType() {
         return wardClassType;
     }
 
-    public Ward wardClassType(WardClassType wardClassType) {
+    public Ward wardClassType(String wardClassType) {
         this.wardClassType = wardClassType;
         return this;
     }
 
-    public void setWardClassType(WardClassType wardClassType) {
+    public void setWardClassType(String wardClassType) {
         this.wardClassType = wardClassType;
     }
 

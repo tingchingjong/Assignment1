@@ -14,11 +14,11 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="iconnectSampleAppLabApp.ward.wardReferenceId" for="field_wardReferenceId">Ward Reference Id</label>
                     <input type="text" class="form-control" name="wardReferenceId" id="field_wardReferenceId"
-                           formControlName="wardReferenceId"/>
+                           formControlName="wardReferenceId" oninput="this.value = this.value.toUpperCase()"/>
                     <div *ngIf="editForm.get('wardReferenceId')!.invalid && (editForm.get('wardReferenceId')!.dirty || editForm.get('wardReferenceId')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('wardReferenceId')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 7 }">
-                        This field is required to be at least 7 characters.
+                        <small class="form-text text-danger"  
+                               *ngIf="editForm.get('wardReferenceId')?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern:'WARD_01 to 10 and maximum character is 7', max: 7 }">
+                        This field should follow the pattern of WARD_01 - 10 and maximum characters is 7.
                         </small>
                     </div>
                 </div>
@@ -40,6 +40,7 @@
                     <select class="form-control" name="wardClassType" formControlName="wardClassType" id="field_wardClassType">
                         <option value="A">{{ 'iconnectSampleAppLabApp.WardClassType.A' | translate }}</option>
                         <option value="B">{{ 'iconnectSampleAppLabApp.WardClassType.B' | translate }}</option>
+                        <option value="C">{{ 'iconnectSampleAppLabApp.WardClassType.C' | translate }}</option>
                     </select>
                     <div *ngIf="editForm.get('wardClassType')!.invalid && (editForm.get('wardClassType')!.dirty || editForm.get('wardClassType')!.touched)">
                         <small class="form-text text-danger"
@@ -54,6 +55,8 @@
                     <select class="form-control" name="wardLocation" formControlName="wardLocation" id="field_wardLocation">
                         <option value="A1">{{ 'iconnectSampleAppLabApp.WardLocation.A1' | translate }}</option>
                         <option value="A2">{{ 'iconnectSampleAppLabApp.WardLocation.A2' | translate }}</option>
+                        <option value="B1">{{ 'iconnectSampleAppLabApp.WardLocation.B1' | translate }}</option>
+                        <option value="B2">{{ 'iconnectSampleAppLabApp.WardLocation.B2' | translate }}</option>
                     </select>
                     <div *ngIf="editForm.get('wardLocation')!.invalid && (editForm.get('wardLocation')!.dirty || editForm.get('wardLocation')!.touched)">
                         <small class="form-text text-danger"

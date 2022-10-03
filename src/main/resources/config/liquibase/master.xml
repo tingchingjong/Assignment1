@@ -19,7 +19,25 @@
     <include file="config/liquibase/changelog/5.7_iConnect_approval.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220930093639_added_entity_Bed.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220930093639_added_entity_Ward.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003025350_added_entity_Bed.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003025350_added_entity_Ward.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003052401_added_entity_Bed.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003052401_added_entity_Ward.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003053907_added_entity_Bed.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003053907_added_entity_Ward.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003060112_added_entity_Bed.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003060112_added_entity_Ward.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003060956_added_entity_Bed.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003060956_added_entity_Ward.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003062257_added_entity_Bed.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003062257_added_entity_Ward.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20220930093639_added_entity_constraints_Bed.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003025350_added_entity_constraints_Bed.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003052401_added_entity_constraints_Bed.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003053907_added_entity_constraints_Bed.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003060112_added_entity_constraints_Bed.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003060956_added_entity_constraints_Bed.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20221003062257_added_entity_constraints_Bed.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

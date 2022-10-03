@@ -7,27 +7,38 @@ import { Observable } from 'rxjs';
 
 import { IWard, Ward } from 'app/shared/model/ward.model';
 import { WardService } from './ward.service';
+import { CodeView, IcCodeService } from 'app/ng-iconnect';
 
 @Component({
   selector: 'ic-ward-update',
   templateUrl: './ward-update.component.html'
 })
 export class WardUpdateComponent implements OnInit {
+  public wardClassTypeDatas: CodeView[] = [];
   isSaving = false;
 
   editForm = this.fb.group({
     id: [],
-    wardReferenceId: [null, [Validators.minLength(7)]],
+    wardReferenceId: [null, [Validators.maxLength(7), Validators.pattern('WARD_(0[1-9]|10)')]],
     wardName: [null, [Validators.maxLength(10)]],
     wardClassType: [null, [Validators.required]],
     wardLocation: [null, [Validators.required]]
   });
 
-  constructor(protected wardService: WardService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected wardService: WardService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
+    protected codeService: IcCodeService
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ ward }) => {
       this.updateForm(ward);
+    });
+
+    this.codeService.gets('wardclasstype').subscribe((datas: any[]) => {
+      this.wardClassTypeDatas = datas[0];
     });
   }
 

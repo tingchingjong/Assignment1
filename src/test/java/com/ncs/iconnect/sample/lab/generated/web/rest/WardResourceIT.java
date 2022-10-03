@@ -44,8 +44,8 @@ public class WardResourceIT {
     private static final String DEFAULT_WARD_NAME = "AAAAAAAAAA";
     private static final String UPDATED_WARD_NAME = "BBBBBBBBBB";
 
-    private static final WardClassType DEFAULT_WARD_CLASS_TYPE = WardClassType.A;
-    private static final WardClassType UPDATED_WARD_CLASS_TYPE = WardClassType.B;
+    private static final String DEFAULT_WARD_CLASS_TYPE = WardClassType.A.toString();
+    private static final String UPDATED_WARD_CLASS_TYPE = WardClassType.B.toString();
 
     private static final WardLocation DEFAULT_WARD_LOCATION = WardLocation.A1;
     private static final WardLocation UPDATED_WARD_LOCATION = WardLocation.A2;
@@ -80,7 +80,7 @@ public class WardResourceIT {
         Ward ward = new Ward()
             .wardReferenceId(DEFAULT_WARD_REFERENCE_ID)
             .wardName(DEFAULT_WARD_NAME)
-            .wardClassType(DEFAULT_WARD_CLASS_TYPE)
+            .wardClassType(DEFAULT_WARD_CLASS_TYPE.toString())
             .wardLocation(DEFAULT_WARD_LOCATION);
         return ward;
     }
@@ -94,7 +94,7 @@ public class WardResourceIT {
         Ward ward = new Ward()
             .wardReferenceId(UPDATED_WARD_REFERENCE_ID)
             .wardName(UPDATED_WARD_NAME)
-            .wardClassType(UPDATED_WARD_CLASS_TYPE)
+            .wardClassType(UPDATED_WARD_CLASS_TYPE.toString())
             .wardLocation(UPDATED_WARD_LOCATION);
         return ward;
     }
