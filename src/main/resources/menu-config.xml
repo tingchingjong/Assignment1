@@ -2,8 +2,8 @@
 <MenuConfig>
    <Menus name="DEFAULT">
        <Menu id="6" name="6" title="global.menu.entities.main" iconCSS="th-list">
-         <Item id="61" name="61" title="global.menu.entities.bed" location="bed" />
-         <Item id="62" name="62" title="global.menu.entities.ward" location="ward" />
+         <Item id="61" name="61" title="global.menu.entities.ward" location="ward" />
+         <Item id="62" name="62" title="global.menu.entities.bed" location="bed" />
          <!--iconnect-needle-entity-menu - iConnect will add entity menu items here-->
        </Menu>  
        <Menu id="7" name="7" title="approval.list" iconCSS="th-list">
