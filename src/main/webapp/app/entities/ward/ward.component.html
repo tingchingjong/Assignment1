@@ -1,9 +1,9 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="iconnectSampleAppLabApp.ward.home.title">Wards</span>
+        <span>Manage Ward</span>
     </h2>
     <div class="form-group row" style="display:block;">
-        <h4>Ward Name Search:</h4>
+        <h4>Search For Ward:</h4>
         <div class="col-sm-3">
           <input class="form-control" name="WardName" id="WardName" [(ngModel)]="searchWard.wardName" />
         </div>
@@ -15,8 +15,7 @@
 
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ward" [routerLink]="['/ward/new']">
             <fa-icon icon="plus"></fa-icon>
-            <span  jhiTranslate="iconnectSampleAppLabApp.ward.home.createLabel">
-            Create a new Ward
+           Add Ward
             </span>
         </button>
 
@@ -26,28 +25,30 @@
     <ic-alert></ic-alert>
 
     <div class="alert alert-warning" id="no-result" *ngIf="wards?.length === 0">
-        <span jhiTranslate="iconnectSampleAppLabApp.ward.home.notFound">No wards found</span>
+        <span style="color:red;">No matchin records</span>
     </div>
 
     <div class="table-responsive" id="entities" *ngIf="wards?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"><span>S/N</span></th>
                     <th scope="col"  jhiSortBy="wardReferenceId"><span jhiTranslate="iconnectSampleAppLabApp.ward.wardReferenceId">Ward Reference Id</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="wardName"><span jhiTranslate="iconnectSampleAppLabApp.ward.wardName">Ward Name</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="wardClassType"><span jhiTranslate="iconnectSampleAppLabApp.ward.wardClassType">Ward Class Type</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="wardLocation"><span jhiTranslate="iconnectSampleAppLabApp.ward.wardLocation">Ward Location</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!-- <th scope="col"  jhiSortBy="wardClassType"><span jhiTranslate="iconnectSampleAppLabApp.ward.wardClassType">Ward Class Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="wardLocation"><span jhiTranslate="iconnectSampleAppLabApp.ward.wardLocation">Ward Location</span> <fa-icon icon="sort"></fa-icon></th> -->
+                    <th scope="col">No. of Bed</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let ward of wards ;trackBy: trackId">
-                    <td><a [routerLink]="['/ward', ward.id, 'view']">{{ ward.id }}</a></td>
+                <tr *ngFor="let ward of wards;trackBy: trackId; let i  = index">
+                <td><a [routerLink]="['/ward',ward.id,'view']">{{ itemsPerPage*(page-1) + i + 1}}</a></td>
                     <td>{{ ward.wardReferenceId }}</td>
                     <td>{{ ward.wardName }}</td>
-                    <td jhiTranslate="{{ 'iconnectSampleAppLabApp.WardClassType.' + ward.wardClassType }}">{{ ward.wardClassType }}</td>
-                    <td jhiTranslate="{{ 'iconnectSampleAppLabApp.WardLocation.' + ward.wardLocation }}">{{ ward.wardLocation }}</td>
+                    <!-- <td jhiTranslate="{{ 'iconnectSampleAppLabApp.WardClassType.' + ward.wardClassType }}">{{ ward.wardClassType }}</td>
+                    <td jhiTranslate="{{ 'iconnectSampleAppLabApp.WardLocation.' + ward.wardLocation }}">{{ ward.wardLocation }}</td> -->
+                    <td>{{  getNumOfBed(ward.id) }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

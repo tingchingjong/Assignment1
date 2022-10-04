@@ -10,6 +10,8 @@ import { IWard, Ward } from 'app/shared/model/ward.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { WardService } from './ward.service';
 import { WardDeleteDialogComponent } from './ward-delete-dialog.component';
+import { IBed } from 'app/shared/model/bed.model';
+import { BedService } from '../bed/bed.service';
 
 @Component({
   selector: 'ic-ward',
@@ -25,13 +27,16 @@ export class WardComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
+  beds?: IBed[];
+  tempBeds: IBed[];
 
   constructor(
     protected wardService: WardService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    protected bedService: BedService
   ) {}
 
   loadPage(page?: number): void {
@@ -72,6 +77,7 @@ export class WardComponent implements OnInit, OnDestroy {
       this.predicate = data.pagingParams.predicate;
       this.ngbPaginationPage = data.pagingParams.page;
       this.loadPage();
+      this.loadBeds();
     });
     this.registerChangeInWards();
   }
@@ -119,5 +125,44 @@ export class WardComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page;
+  }
+
+  getNumOfBed(wardId: number): number {
+    this.tempBeds = this.beds.filter(v => v.wardId === wardId);
+
+    return this.tempBeds.length;
+  }
+
+  loadBeds(page?: number): void {
+    const pageToLoad: number = page || this.page;
+    this.bedService
+      .query({
+        page: pageToLoad - 1,
+        size: 100,
+        sort: this.sort()
+      })
+      .subscribe(
+        (res: HttpResponse<IBed[]>) => this.onSuccessForBed(res.body, res.headers, pageToLoad),
+        () => this.onError()
+      );
+  }
+  protected onSuccessForBed(data: IBed[] | null, headers: HttpHeaders, page: number): void {
+    this.totalItems = Number(headers.get('X-Total-Count'));
+
+    this.page = page;
+
+    this.router.navigate(['/ward'], {
+      queryParams: {
+        page: this.page,
+
+        size: this.itemsPerPage,
+
+        sort: this.predicate + ',' + (this.ascending ? 'asc' : 'desc')
+      }
+    });
+
+    this.beds = data || [];
+
+    this.tempBeds = this.beds;
   }
 }
