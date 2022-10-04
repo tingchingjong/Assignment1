@@ -1,6 +1,17 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="iconnectSampleAppLabApp.ward.home.title">Wards</span>
+    </h2>
+    <div class="form-group row" style="display:block;">
+        <h4>Ward Name Search:</h4>
+        <div class="col-sm-3">
+          <input class="form-control" name="WardName" id="WardName" [(ngModel)]="searchWard.wardName" />
+        </div>
+      </div>
+    <button class="btn btn-warning btn-sm" (click)="search()">
+        <fa-icon [icon]="'search'"></fa-icon>
+        <span class="fa fa-search" jhiTranslate="approvalTemplate.param.btn.search">Search</span>
+      </button>
 
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-ward" [routerLink]="['/ward/new']">
             <fa-icon icon="plus"></fa-icon>
@@ -8,7 +19,7 @@
             Create a new Ward
             </span>
         </button>
-    </h2>
+
 
     <ic-alert-error></ic-alert-error>
 

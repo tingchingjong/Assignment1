@@ -80,4 +80,8 @@ public class WardService {
         log.debug("Request to delete Ward : {}", id);
         wardRepository.deleteById(id);
     }
+
+    public Page<Ward> search(String query, Pageable page){
+        return WardRepository.search(query,page);
+    }
 }

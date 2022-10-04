@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IWard } from 'app/shared/model/ward.model';
+import { IWard, Ward } from 'app/shared/model/ward.model';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { WardService } from './ward.service';
@@ -16,6 +16,7 @@ import { WardDeleteDialogComponent } from './ward-delete-dialog.component';
   templateUrl: './ward.component.html'
 })
 export class WardComponent implements OnInit, OnDestroy {
+  searchWard = new Ward();
   wards?: IWard[];
   eventSubscriber?: Subscription;
   totalItems = 0;
@@ -44,6 +45,22 @@ export class WardComponent implements OnInit, OnDestroy {
       })
       .subscribe(
         (res: HttpResponse<IWard[]>) => this.onSuccess(res.body, res.headers, pageToLoad),
+        () => this.onError()
+      );
+  }
+  search(): void {
+    this.load();
+  }
+  load(): void {
+    this.wardService
+      .query({
+        'wardName.contains': this.searchWard.wardName,
+        page: this.page - 1,
+        size: this.itemsPerPage,
+        sort: this.sort()
+      })
+      .subscribe(
+        (res: HttpResponse<IWard[]>) => this.onSuccess(res.body, res.headers, this.page),
         () => this.onError()
       );
   }
