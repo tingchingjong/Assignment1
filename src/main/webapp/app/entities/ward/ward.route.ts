@@ -12,6 +12,7 @@ import { WardService } from './ward.service';
 import { WardComponent } from './ward.component';
 import { WardDetailComponent } from './ward-detail.component';
 import { WardUpdateComponent } from './ward-update.component';
+import { WardCreateComponent } from './ward-create.component';
 
 @Injectable({ providedIn: 'root' })
 export class WardResolve implements Resolve<IWard> {
@@ -63,7 +64,7 @@ export const wardRoute: Routes = [
   },
   {
     path: 'new',
-    component: WardUpdateComponent,
+    component: WardCreateComponent,
     resolve: {
       ward: WardResolve
     },
