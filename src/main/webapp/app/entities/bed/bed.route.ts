@@ -12,6 +12,7 @@ import { BedService } from './bed.service';
 import { BedComponent } from './bed.component';
 import { BedDetailComponent } from './bed-detail.component';
 import { BedUpdateComponent } from './bed-update.component';
+import { BedCreateComponent } from './bed-create.component';
 
 @Injectable({ providedIn: 'root' })
 export class BedResolve implements Resolve<IBed> {
@@ -63,7 +64,7 @@ export const bedRoute: Routes = [
   },
   {
     path: 'new',
-    component: BedUpdateComponent,
+    component: BedCreateComponent,
     resolve: {
       bed: BedResolve
     },

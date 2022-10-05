@@ -5,7 +5,7 @@
         "title": "Beds",
         "createLabel": "创建新 Bed",
         "createOrEditLabel": "创建或编辑 Bed",
-        "notFound": "No Beds found"
+        "notFound": "Please add a bed."
       },
       "created": "Bed {{ param }} 创建成功",
       "updated": "Bed {{ param }} 更新成功",

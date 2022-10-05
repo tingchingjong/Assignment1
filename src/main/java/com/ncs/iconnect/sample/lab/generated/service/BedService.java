@@ -4,6 +4,9 @@ import com.ncs.iconnect.sample.lab.generated.domain.Bed;
 import com.ncs.iconnect.sample.lab.generated.repository.BedRepository;
 import com.ncs.iconnect.sample.lab.generated.service.dto.BedDTO;
 import com.ncs.iconnect.sample.lab.generated.service.mapper.BedMapper;
+import com.ncs.iconnect.sample.lab.generated.web.rest.errors.BedNameAlreadyUsedException;
+import com.ncs.iconnect.sample.lab.generated.web.rest.errors.BedReferenceIdAlreadyUsedException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.Objects;
 
 /**
  * Service Implementation for managing {@link Bed}.
@@ -38,12 +42,7 @@ public class BedService {
      * @param bedDTO the entity to save.
      * @return the persisted entity.
      */
-    public BedDTO save(BedDTO bedDTO) {
-        log.debug("Request to save Bed : {}", bedDTO);
-        Bed bed = bedMapper.toEntity(bedDTO);
-        bed = bedRepository.save(bed);
-        return bedMapper.toDto(bed);
-    }
+
 
     /**
      * Get all the beds.
@@ -80,4 +79,54 @@ public class BedService {
         log.debug("Request to delete Bed : {}", id);
         bedRepository.deleteById(id);
     }
+
+     public Page<Bed> search(String query, Pageable page){
+
+        return BedRepository.search(query,page);
+
+    }
+
+    
+    public BedDTO save(BedDTO bedDTO) {
+
+        //TODO Function Check before Save.
+        log.debug("Request to save bed : {}", bedDTO);
+        if(isBedReferenceIdInUse(bedDTO.getBedReferenceId())){
+           throw new BedReferenceIdAlreadyUsedExceptions();
+        }else if (isBedNameInUse(bedDTO.getBedName())){
+           throw new BedNameAlreadyUsedExceptions();
+        }
+
+        Bed bed = bedMapper.toEntity(bedDTO);
+        bed = bedRepository.save(bed);
+        return bedMapper.toDto(bed);
+      
+    }
+    public BedDTO update(BedDTO bedDTO) {
+        //TODO Function Check before Update.
+       log.debug("Request to save Bed : {}", bedDTO);
+       BedDTO oldBed = findOne(bedDTO.getId()).orElseThrow(RuntimeException::new);
+       if(!Objects.equals(oldBed.getBedReferenceId(),bedDTO.getBedReferenceId()) && isBedReferenceIdInUse(bedDTO.getBedReferenceId())){
+            // Todo : Update All field except ID
+            throw new BedReferenceIdAlreadyUsedException();
+       }
+        if(!Objects.equals(oldBed.getBedName(),bedDTO.getBedName()) && isBedNameInUse(bedDTO.getBedName())){
+            // Todo : Update All field except ID
+            throw new BedNameAlreadyUsedException();
+        }
+        // Update All
+        Bed bed = bedMapper.toEntity(bedDTO);
+        bed = bedRepository.save(bed);
+        return bedMapper.toDto(bed);
+    }
+
+
+    //TODO Check Function
+    public boolean isBedReferenceIdInUse(String bedReferenceId) {
+        return bedRepository.findByBedReferenceId(bedReferenceId)!=null;
+    }
+    public boolean isBedNameInUse(String bedName){
+        return bedRepository.findByBedName(bedName) != null;
+    }
+
 }

@@ -133,4 +133,17 @@ public class ExceptionTranslator implements ProblemHandling, SecurityAdviceTrait
         com.ncs.iconnect.sample.lab.generated.web.rest.errors.WardReferenceIdAlreadyUsedException problem = new com.ncs.iconnect.sample.lab.generated.web.rest.errors.WardReferenceIdAlreadyUsedException();
         return create(problem, request, HeaderUtil.createFailureAlert(applicationName,  true, problem.getEntityName(), problem.getErrorKey(), problem.getMessage()));
     }
+    
+    // TODO USERNAME EXCEPTION
+    @ExceptionHandler
+    public ResponseEntity<Problem> handleBedNameAlreadyUsedException(com.ncs.iconnect.sample.lab.generated.service.BedNameAlreadyUsedExceptions ex, NativeWebRequest request) {
+        BedNameAlreadyUsedException problem = new BedNameAlreadyUsedException();
+        return create(problem, request, HeaderUtil.createFailureAlert(applicationName,  true, problem.getEntityName(), problem.getErrorKey(), problem.getMessage()));
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Problem> handlBedReferenceIdAlreadyUsedException(com.ncs.iconnect.sample.lab.generated.service.BedReferenceIdAlreadyUsedExceptions ex, NativeWebRequest request) {
+        com.ncs.iconnect.sample.lab.generated.web.rest.errors.BedReferenceIdAlreadyUsedException problem = new com.ncs.iconnect.sample.lab.generated.web.rest.errors.BedReferenceIdAlreadyUsedException();
+        return create(problem, request, HeaderUtil.createFailureAlert(applicationName,  true, problem.getEntityName(), problem.getErrorKey(), problem.getMessage()));
+    }
 }

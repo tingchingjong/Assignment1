@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IBed } from 'app/shared/model/bed.model';
+import { Bed, IBed } from 'app/shared/model/bed.model';
 
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { BedService } from './bed.service';
@@ -24,6 +24,7 @@ export class BedComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
+  searchBed = new Bed();
 
   constructor(
     protected bedService: BedService,
@@ -39,7 +40,6 @@ export class BedComponent implements OnInit, OnDestroy {
     this.bedService
       .query({
         page: pageToLoad - 1,
-        size: this.itemsPerPage,
         sort: this.sort()
       })
       .subscribe(
@@ -102,5 +102,25 @@ export class BedComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page;
+  }
+
+  search(): void {
+    this.load();
+  }
+
+  load(): void {
+    this.bedService
+      .query({
+        'bedName.contains': this.searchBed.bedName,
+        page: this.page - 1,
+        size: this.itemsPerPage,
+        sort: this.sort()
+      })
+
+      .subscribe(
+        (res: HttpResponse<IBed[]>) => this.onSuccess(res.body, res.headers, this.page),
+
+        () => this.onError()
+      );
   }
 }

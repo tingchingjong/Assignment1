@@ -8,9 +8,11 @@ import { BedUpdateComponent } from './bed-update.component';
 import { BedDeleteDialogComponent } from './bed-delete-dialog.component';
 import { bedRoute } from './bed.route';
 
+import { BedCreateComponent } from './bed-create.component';
+
 @NgModule({
   imports: [IconnectSampleAppLabSharedModule, RouterModule.forChild(bedRoute)],
-  declarations: [BedComponent, BedDetailComponent, BedUpdateComponent, BedDeleteDialogComponent],
+  declarations: [BedComponent, BedDetailComponent, BedUpdateComponent, BedDeleteDialogComponent, BedCreateComponent],
   entryComponents: [BedDeleteDialogComponent]
 })
 export class IconnectSampleAppLabBedModule {}

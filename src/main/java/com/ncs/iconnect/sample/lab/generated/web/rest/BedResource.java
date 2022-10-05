@@ -83,7 +83,7 @@ public class BedResource {
         if (bedDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        BedDTO result = bedService.save(bedDTO);
+        BedDTO result = bedService.update(bedDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, bedDTO.getId().toString()))
             .body(result);

@@ -14,6 +14,8 @@ public final class ErrorConstants {
     public static final URI LOGIN_ALREADY_USED_TYPE = URI.create(PROBLEM_BASE_URL + "/login-already-used");
     public static final String WARD_REFERENCE_ID_ALREADY_USED_TYPE = "ward.reference.id.in.use";
     public static final String WARD_NAME_ALREADY_USED_TYPE = "ward.name.in.use";
+	public static final String BED_NAME_ALREADY_USED_TYPE = "bed.name.in.use";
+	public static final String BED_REFERENCE_ID_ALREADY_USED_TYPE = "bed.reference.id.in.use";
 
     private ErrorConstants() {
     }

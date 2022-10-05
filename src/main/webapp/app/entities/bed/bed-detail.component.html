@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="bed">
-            <h2><span jhiTranslate="iconnectSampleAppLabApp.bed.detail.title">Bed</span> {{ bed.id }}</h2>
+            <h2><span>View Bed</span></h2>
 
             <hr>
 
@@ -16,16 +16,23 @@
                 <dd>
                     <span>{{ bed.bedName }}</span>
                 </dd>
-                <dt><span jhiTranslate="iconnectSampleAppLabApp.bed.wardAllocationDate">Ward Allocation Date</span></dt>
-                <dd>
-                    <span>{{ bed.wardAllocationDate }}</span>
-                </dd>
-                <dt><span jhiTranslate="iconnectSampleAppLabApp.bed.ward">Ward</span></dt>
+                <dt><span>Ward Name</span></dt>
                 <dd>
                     <div *ngIf="bed.wardId">
                         <a [routerLink]="['/ward', bed.wardId, 'view']">{{ bed.wardWardName }}</a>
                     </div>
                 </dd>
+                <dt><span>Ward Class Type</span></dt>
+                <dd>
+                    <div *ngIf="bed.wardId">
+                        <a [routerLink]="['/ward', bed.wardId, 'view']">{{ getWardTypeClass(bed.wardWardName) }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="iconnectSampleAppLabApp.bed.wardAllocationDate">Ward Allocation Date</span></dt>
+                <dd>
+                    <span>{{ bed.wardAllocationDate }}</span>
+                </dd>
+              
             </dl>
 
             <button type="submit"
