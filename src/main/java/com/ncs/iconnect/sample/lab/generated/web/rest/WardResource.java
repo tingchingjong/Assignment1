@@ -25,6 +25,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Objects;
 
 /**
  * REST controller for managing {@link com.ncs.iconnect.sample.lab.generated.domain.Ward}.
@@ -83,7 +84,7 @@ public class WardResource {
         if (wardDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        WardDTO result = wardService.save(wardDTO);
+        WardDTO result = wardService.update(wardDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, wardDTO.getId().toString()))
             .body(result);

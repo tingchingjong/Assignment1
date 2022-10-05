@@ -18,4 +18,7 @@ public interface WardRepository extends JpaRepository<Ward, Long>, JpaSpecificat
     public static Page<Ward> search(@Param("query") String query, Pageable page){
         return null;
     }
+
+    Ward findByWardReferenceId(String wardReferenceId);
+    Ward findByWardName(String wardName);
 }

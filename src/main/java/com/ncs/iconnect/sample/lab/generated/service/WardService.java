@@ -4,6 +4,9 @@ import com.ncs.iconnect.sample.lab.generated.domain.Ward;
 import com.ncs.iconnect.sample.lab.generated.repository.WardRepository;
 import com.ncs.iconnect.sample.lab.generated.service.dto.WardDTO;
 import com.ncs.iconnect.sample.lab.generated.service.mapper.WardMapper;
+import com.ncs.iconnect.sample.lab.generated.web.rest.errors.WardNameAlreadyUsedException;
+import com.ncs.iconnect.sample.lab.generated.web.rest.errors.WardReferenceIdAlreadyUsedException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.Objects;
 
 /**
  * Service Implementation for managing {@link Ward}.
@@ -38,12 +42,7 @@ public class WardService {
      * @param wardDTO the entity to save.
      * @return the persisted entity.
      */
-    public WardDTO save(WardDTO wardDTO) {
-        log.debug("Request to save Ward : {}", wardDTO);
-        Ward ward = wardMapper.toEntity(wardDTO);
-        ward = wardRepository.save(ward);
-        return wardMapper.toDto(ward);
-    }
+
 
     /**
      * Get all the wards.
@@ -84,4 +83,49 @@ public class WardService {
     public Page<Ward> search(String query, Pageable page){
         return WardRepository.search(query,page);
     }
+    
+    public WardDTO save(WardDTO wardDTO) {
+
+        //TODO Function Check before Save.
+        log.debug("Request to save Ward : {}", wardDTO);
+        if(isWardReferenceIdInUse(wardDTO.getWardReferenceId())){
+           throw new WardReferenceIdAlreadyUsedExceptions();
+        }else if (isWardNameInUse(wardDTO.getWardName())){
+           throw new WardNameAlreadyUsedExceptions();
+        }
+
+        Ward ward = wardMapper.toEntity(wardDTO);
+        ward = wardRepository.save(ward);
+        return wardMapper.toDto(ward);
+        
+    }
+    
+    public WardDTO update(WardDTO wardDTO) {
+        //TODO Function Check before Update.
+       log.debug("Request to save Ward : {}", wardDTO);
+       WardDTO oldWard = findOne(wardDTO.getId()).orElseThrow(RuntimeException::new);
+       if(!Objects.equals(oldWard.getWardReferenceId(),wardDTO.getWardReferenceId()) && isWardReferenceIdInUse(wardDTO.getWardReferenceId())){
+            // Todo : Update All field except ID
+            throw new WardReferenceIdAlreadyUsedException();
+       }
+        if(!Objects.equals(oldWard.getWardName(),wardDTO.getWardName()) && isWardNameInUse(wardDTO.getWardName())){
+            // Todo : Update All field except ID
+            throw new WardNameAlreadyUsedException();
+        }
+        // Update All
+        Ward ward = wardMapper.toEntity(wardDTO);
+        ward = wardRepository.save(ward);
+        return wardMapper.toDto(ward);
+    }
+
+
+    //TODO Check Function
+    public boolean isWardReferenceIdInUse(String wardReferenceId) {
+        return wardRepository.findByWardReferenceId(wardReferenceId)!=null;
+    }
+    public boolean isWardNameInUse(String wardName){
+        return wardRepository.findByWardName(wardName) != null;
+    }
+    
+
 }
