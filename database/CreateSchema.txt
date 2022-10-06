@@ -1,0 +1,2 @@
+CREATE SCHEMA Assignment_Present1 DEFAULT CHARACTER SET utf8mb4;
+USE Assignment1;

@@ -36,9 +36,20 @@ export class BedCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ bed }) => {
-      this.CreateForm(bed);
-
-      this.wardService.query().subscribe((res: HttpResponse<IWard[]>) => (this.wards = res.body || []));
+      this.updateForm(bed);
+      this.wardService.query().subscribe((res: HttpResponse<IWard[]>) => {
+        this.wards = res.body || [];
+        this.wards = this.wards.sort((a, b) => (a.wardName > b.wardName ? 1 : -1));
+      });
+    });
+  }
+  updateForm(bed: IBed): void {
+    this.editForm.patchValue({
+      id: bed.id,
+      bedReferenceId: bed.bedReferenceId,
+      bedName: bed.bedName,
+      wardAllocationDate: bed.wardAllocationDate,
+      wardId: bed.wardId
     });
   }
 

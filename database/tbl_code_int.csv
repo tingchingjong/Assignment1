@@ -1,0 +1,41 @@
+ID,CODETYPE_ID,CODE_ID,PARENT_CODETYPE_ID,PARENT_CODE_ID,CODE_DESC,CODE_SEQ,STATUS,EFFECTIVE_DT,EXPIRY_DT,UPDATED_BY,UPDATED_DT,LOCALE,VERSION
+40288f08839b5b5201839b928b480003,40288f08839b5b5201839b91d3810002,A,NULL,NULL,"Class A",1,A,NULL,NULL,appadmin,"2022-10-03 02:00:16",en,0
+40288f08839b5b5201839b92b0980004,40288f08839b5b5201839b91d3810002,B,NULL,NULL,"Class B",2,A,NULL,NULL,appadmin,"2022-10-03 03:19:28",en,1
+40288f08839b5b5201839b92c8990005,40288f08839b5b5201839b91d3810002,C,NULL,NULL,"Class C",3,A,NULL,NULL,appadmin,"2022-10-03 03:19:33",en,1
+40288f08839ce21101839cfe24590004,40288f08839ce21101839cfdabe90003,A1,NULL,NULL,"Block A Level 1",1,A,NULL,NULL,appadmin,"2022-10-03 08:37:25",en,0
+40288f08839ce21101839cfe57f40005,40288f08839ce21101839cfdabe90003,A2,NULL,NULL,"Block A Level 2",2,A,NULL,NULL,appadmin,"2022-10-03 08:37:38",en,0
+40288f08839ce21101839cfe97730006,40288f08839ce21101839cfdabe90003,B1,NULL,NULL,"Block B Level 1",3,A,NULL,NULL,appadmin,"2022-10-03 08:37:54",en,0
+40288f08839ce21101839cfee4b80007,40288f08839ce21101839cfdabe90003,B2,NULL,NULL,"Block B Level 2",4,A,NULL,NULL,appadmin,"2022-10-03 08:38:14",en,0
+acm_res_ACTION,acm_res,WEBURI,NULL,NULL,WEBURI,2,A,NULL,NULL,NULL,NULL,en,0
+acm_res_URI,acm_res,URI,NULL,NULL,URI,1,A,NULL,NULL,NULL,NULL,en,0
+loginType_LDAP,loginType,LDAP,NULL,NULL,"LDAP Login",2,A,NULL,NULL,NULL,NULL,en,0
+loginType_PASSWORD,loginType,PASSWORD,NULL,NULL,"Password Login",1,A,NULL,NULL,NULL,NULL,en,0
+loginType_SINGPASS,loginType,SINGPASS,NULL,NULL,"Singpass Login",3,A,NULL,NULL,NULL,NULL,en,0
+process_st_A,process_st,A,NULL,NULL,Active,1,A,NULL,NULL,DEF-user-useradmin,NULL,en,0
+process_st_C,process_st,C,NULL,NULL,Completed,2,A,NULL,NULL,DEF-user-useradmin,NULL,en,0
+process_st_F,process_st,F,NULL,NULL,Failed,6,A,NULL,NULL,DEF-user-useradmin,NULL,en,0
+process_st_K,process_st,K,NULL,NULL,Creating,5,A,NULL,NULL,DEF-user-useradmin,NULL,en,0
+process_st_S,process_st,S,NULL,NULL,Suspended,3,A,NULL,NULL,DEF-user-useradmin,NULL,en,0
+process_st_T,process_st,T,NULL,NULL,Terminated,4,A,NULL,NULL,DEF-user-useradmin,NULL,en,0
+pubDest_File,pubDest,File,NULL,NULL,File,2,A,NULL,NULL,NULL,NULL,en,0
+pubDest_FTP,pubDest,FTP,NULL,NULL,FTP,1,A,NULL,NULL,NULL,NULL,en,0
+pubStatus_A,pubStatus,A,NULL,NULL,Active,1,A,NULL,NULL,NULL,NULL,en,0
+pubStatus_I,pubStatus,I,NULL,NULL,Inactive,2,A,NULL,NULL,NULL,NULL,en,0
+schStatus_C,schStatus,C,NULL,NULL,Successful,6,A,NULL,NULL,NULL,NULL,en,0
+schStatus_F,schStatus,F,NULL,NULL,Failed,4,A,NULL,NULL,NULL,NULL,en,0
+schStatus_N,schStatus,N,NULL,NULL,Unscheduled,5,A,NULL,NULL,NULL,NULL,en,0
+schStatus_P,schStatus,P,NULL,NULL,Published,2,A,NULL,NULL,NULL,NULL,en,0
+schStatus_S,schStatus,S,NULL,NULL,Scheduled,1,A,NULL,NULL,NULL,NULL,en,0
+schStatus_U,schStatus,U,NULL,NULL,Unpublished,3,A,NULL,NULL,NULL,NULL,en,0
+status_A,status,A,NULL,NULL,Active,1,A,NULL,NULL,NULL,"2016-06-13 16:10:19",en,0
+status_I,status,I,NULL,NULL,Inactive,3,A,NULL,NULL,NULL,"2016-06-13 16:10:19",en,0
+status_P,status,P,NULL,NULL,Pending,5,P,NULL,NULL,NULL,"2016-06-13 16:10:19",en,0
+status_R,status,R,NULL,NULL,Revoked,4,A,NULL,NULL,NULL,"2016-06-13 16:10:19",en,0
+status_S,status,S,NULL,NULL,Suspended,2,A,NULL,NULL,NULL,"2016-06-13 16:10:19",en,0
+task_st_C,task_st,C,NULL,NULL,"Complete Failed",3,A,NULL,NULL,DEF-user-useradmin,NULL,en,0
+task_st_P,task_st,P,NULL,NULL,Processing,2,A,NULL,NULL,DEF-user-useradmin,NULL,en,0
+task_st_S,task_st,S,NULL,NULL,"Skip Failed",3,A,NULL,NULL,DEF-user-useradmin,NULL,en,0
+task_st_W,task_st,W,NULL,NULL,Waiting,1,A,NULL,NULL,DEF-user-useradmin,NULL,en,0
+translogtype_DELETE,translogtype,DELETE,NULL,NULL,DELETE,3,A,NULL,NULL,NULL,NULL,en,0
+translogtype_INSERT,translogtype,INSERT,NULL,NULL,INSERT,1,A,NULL,NULL,NULL,NULL,en,0
+translogtype_UPDATE,translogtype,UPDATE,NULL,NULL,UPDATE,2,A,NULL,NULL,NULL,NULL,en,0
