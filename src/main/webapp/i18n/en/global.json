@@ -139,7 +139,7 @@
     "idnull": "Invalid ID",
     "wardidexists": "Ward Reference ID in use",
     "wardnameexists": "Ward Name in use",
-    "bedidexists": "Bed reference id is already in use!",
+    "bedidexists": "Bed Reference ID in use for {{  wardReferenceId  }} {{  wardName  }}",
     "bednameexists": "Bed name is already in use!",
     "file": {
       "could.not.extract": "Could not extract file",

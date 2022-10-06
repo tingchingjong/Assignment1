@@ -18,11 +18,45 @@
                 </dd>
                 <dt><span jhiTranslate="iconnectSampleAppLabApp.ward.wardClassType">Ward Class Type</span></dt>
                 <dd>
-                    <span jhiTranslate="{{ 'iconnectSampleAppLabApp.WardClassType.' + ward.wardClassType }}">{{ ward.wardClassType }}</span>
+                    <span>{{ wardClassType }}<span>
                 </dd>
                 <dt><span jhiTranslate="iconnectSampleAppLabApp.ward.wardLocation">Ward Location</span></dt>
                 <dd>
-                    <span jhiTranslate="{{ 'iconnectSampleAppLabApp.WardLocation.' + ward.wardLocation }}">{{ ward.wardLocation }}</span>
+                    <span>{{ wardLocation }}</span>
+                </dd>
+                <dt><span>No. of Bed</span></dt>
+                <dd>
+                    <span>{{ getNumOfBed(ward.id) }}</span>
+                </dd>
+                <dt><span>Listing of Beds</span></dt>
+                <dd>
+                    <div class="table-responsive" *ngIf="beds?.length > 0">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><span>S/N</span></th>
+                                    <th scope="col" ><span >Bed Reference ID</span></th>
+                                    <th scope="col"><span j>Bed Name</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let bed of beds;let i = index">
+                                    <td>{{ i + 1 }}</td>
+                                    <td>{{ bed.bedReferenceId }}</td>
+                                    <td><a [routerLink]="['/bed', bed.id, 'view']">{{ bed.bedName }}</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive" *ngIf="beds?.length == 0">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <td>No bed records</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </dd>
             </dl>
 

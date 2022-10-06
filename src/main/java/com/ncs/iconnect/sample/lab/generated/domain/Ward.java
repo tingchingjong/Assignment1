@@ -48,7 +48,7 @@ public class Ward implements Serializable {
     @Column(name = "ward_location", nullable = false)
     private WardLocation wardLocation;
 
-    @OneToMany(mappedBy = "ward")
+    @OneToMany(mappedBy = "ward", cascade = CascadeType.ALL)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Bed> beds = new HashSet<>();
 

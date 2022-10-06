@@ -15,19 +15,23 @@
                 <div class="form-group">
                     <label class="form-control-label" for="field_bedReferenceId">Bed Reference ID</label>
                     <input type="text" class="form-control" name="bedReferenceId" id="field_bedReferenceId"
-                           formControlName="bedReferenceId"/>
+                           formControlName="bedReferenceId" oninput="this.value = this.value.toUpperCase()"/>
                     <div *ngIf="editForm.get('bedReferenceId')!.invalid && (editForm.get('bedReferenceId')!.dirty || editForm.get('bedReferenceId')!.touched)">
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('bedReferenceId')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                               *ngIf="editForm.get('bedReferenceId')?.errors?.pattern" jhiTranslate="entity.validation.pattern" [translateValues]="{ pattern:'BED_01 to 10 and maximum character is 6', max: 6 }">
+                               This field should follow the pattern of BED - 10 and maximum characters is 6.
                         </small>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="iconnectSampleAppLabApp.bed.bedName" for="field_bedName">Bed Name</label>
-                    <input type="text" class="form-control" name="bedName" id="field_bedName"
-                           formControlName="bedName"/>
+                    <input type="text" class="form-control" name="bedName" id="field_bedName" 
+                           formControlName="bedName"/> 
+                           <small class="form-text text-danger"
+                               *ngIf="editForm.get('bedName')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 17 }">
+                               This field should only have maximum characters is 17.
+                        </small>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" for="field_ward">Ward Name</label>
@@ -38,7 +42,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="iconnectSampleAppLabApp.bed.wardAllocationDate" for="field_wardAllocationDate">Ward Allocation Date</label>
+                    <label class="form-control-label" for="field_wardAllocationDate">Date Allocated to Ward</label>
                     <div class="input-group">
                         <input id="field_wardAllocationDate" type="text" class="form-control" name="wardAllocationDate" ngbDatepicker #wardAllocationDateDp="ngbDatepicker" formControlName="wardAllocationDate"/>
                         <span class="input-group-append">

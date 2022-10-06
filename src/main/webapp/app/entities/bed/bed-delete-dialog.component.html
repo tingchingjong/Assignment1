@@ -9,7 +9,7 @@
     <div class="modal-body">
         <ic-alert-error></ic-alert-error>
 
-        <p id="ic-delete-bed-heading" jhiTranslate="iconnectSampleAppLabApp.bed.delete.question" [translateValues]="{ id: bed.id }">Are you sure you want to delete this Bed?</p>
+        <p id="ic-delete-bed-heading" jhiTranslate="iconnectSampleAppLabApp.bed.delete.question" [translateValues]="{ bed_id: bed.bedReferenceId, bed_name : bed.bedName }">Are you sure you want to delete this Bed?</p>
     </div>
 
     <div class="modal-footer">

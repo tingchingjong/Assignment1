@@ -11,7 +11,7 @@
       "updated": "Ward details updated successfully",
       "deleted": "Ward deleted successfully ",
       "delete": {
-        "question": "Are you sure you want to delete Ward {{ id }}?"
+        "question": "All beds allocated to this ward will be deleted as well. Proceed to remove?"
       },
       "detail": {
         "title": "Ward"

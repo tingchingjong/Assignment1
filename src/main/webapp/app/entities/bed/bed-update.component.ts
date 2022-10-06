@@ -21,8 +21,8 @@ export class BedUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    bedReferenceId: [null, [Validators.required]],
-    bedName: [],
+    bedReferenceId: [null, [Validators.required, Validators.maxLength(7), Validators.pattern('BED_(0[1-9]|10)')]],
+    bedName: [null, [Validators.maxLength(17)]],
     wardAllocationDate: [null, [Validators.required]],
     wardId: []
   });

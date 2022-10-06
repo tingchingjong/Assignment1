@@ -21,8 +21,8 @@ export class BedCreateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    bedReferenceId: [null, [Validators.required]],
-    bedName: [],
+    bedReferenceId: [null, [Validators.required, Validators.maxLength(7), Validators.pattern('BED_(0[1-9]|10)')]],
+    bedName: [null, [Validators.maxLength(17)]],
     wardAllocationDate: [null, [Validators.required]],
     wardId: []
   });
@@ -59,11 +59,18 @@ export class BedCreateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const bed = this.createFromForm();
+    if (!bed.bedName) {
+      bed.bedName = `${this.getWardName(bed.wardId)}_${bed.bedReferenceId}`;
+    }
     if (bed.id !== undefined) {
       this.subscribeToSaveResponse(this.bedService.update(bed));
     } else {
       this.subscribeToSaveResponse(this.bedService.create(bed));
     }
+  }
+
+  private getWardName(wardId: number): string {
+    return this.wards.find(ward => ward.id === wardId).wardName;
   }
 
   private createFromForm(): IBed {

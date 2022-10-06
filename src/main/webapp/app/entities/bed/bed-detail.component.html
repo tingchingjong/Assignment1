@@ -22,15 +22,17 @@
                         <a [routerLink]="['/ward', bed.wardId, 'view']">{{ bed.wardWardName }}</a>
                     </div>
                 </dd>
-                <dt><span>Ward Class Type</span></dt>
+                <dt><span jhiTranslate="iconnectSampleAppLabApp.ward.wardClassType">Ward Class Type</span></dt>
                 <dd>
-                    <div *ngIf="bed.wardId">
-                        <a [routerLink]="['/ward', bed.wardId, 'view']">{{ getWardTypeClass(bed.wardWardName) }}</a>
-                    </div>
+                    <span>{{ getWardClassType(bed.wardId) }}</span>
                 </dd>
-                <dt><span jhiTranslate="iconnectSampleAppLabApp.bed.wardAllocationDate">Ward Allocation Date</span></dt>
+                <dt><span jhiTranslate="iconnectSampleAppLabApp.ward.wardLocation">Ward Location</span></dt>
                 <dd>
-                    <span>{{ bed.wardAllocationDate }}</span>
+                    <span>{{ getWardLocation(bed.wardId) }}</span> 
+                </dd>
+                <dt><span>Date Allocated to Ward</span></dt>
+                <dd>
+                    <span>{{ convertTime(bed.wardAllocationDate) }}</span>
                 </dd>
               
             </dl>
@@ -38,14 +40,14 @@
             <button type="submit"
                     (click)="previousState()"
                     class="btn btn-info">
-                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Cancel</span>
             </button>
 
-            <button type="button"
+            <!-- <button type="button"
                     [routerLink]="['/bed', bed.id, 'edit']"
                     class="btn btn-primary">
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-            </button>
+            </button> -->
         </div>
     </div>
 </div>

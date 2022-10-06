@@ -8,10 +8,10 @@
         "notFound": "No matching records"
       },
       "created": "Bed details added successfully. Do you want to add another new bed?",
-      "updated": "A Bed is updated with identifier {{ param }}",
+      "updated": "Bed details updated successfully",
       "deleted": "Bed deleted successfully",
       "delete": {
-        "question": "Are you sure you want to delete Bed {{ id }}?"
+        "question": "Proceed to remove {{ BedReferenceId }} {{ bedName}}?"
       },
       "detail": {
         "title": "Bed"
