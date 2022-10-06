@@ -35,9 +35,9 @@ spring:
     serialization:
       indent-output: true
   datasource:
-    name: Assignment1
+    name: Assignment_Present1
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://localhost:3306/Assignment1?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/Assignment_Present1?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: pass1234
     hikari:
